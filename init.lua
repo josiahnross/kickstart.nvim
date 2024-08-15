@@ -1,3 +1,13 @@
+-- TODO: nvim-chainsaw, treesitter text objects, spell checking in linters, git stuff(nvim-tinygit), folds
+-- scissors(edit/add snippets on the fly), refactoring helpers(refactoring.nvim)
+-- harpoon(also has tmux integration!)
+-- remember jump and change list maybe add command to pull them up in telescope also g; and g, go forwards and backwards in change list without making edits
+-- start using marks
+-- maybe yank history
+-- use C-a and C-x to inc and dec number
+-- shortcut for find and replace all
+-- debugging?!?!
+
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ','
@@ -655,7 +665,7 @@ require('lazy').setup({
         return false
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
-        -- languages here or re-enable it for the disabled ones.
+        --lnguages here or re-enable it for the disabled ones.
         -- local disable_filetypes = { c = true, cpp = true, rs = true }
         -- return {
         --   timeout_ms = 500,
@@ -760,7 +770,7 @@ require('lazy').setup({
   --
   -- require 'kickstart.plugins.debug',
   require 'kickstart.plugins.indent_line',
-  -- require 'kickstart.plugins.lint',
+  require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps

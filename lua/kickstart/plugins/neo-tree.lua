@@ -11,7 +11,7 @@ return {
   },
   cmd = 'Neotree',
   keys = {
-    { '\\', ':Neotree reveal<CR>', { desc = 'NeoTree reveal' } },
+    { '<leader>te', ':Neotree reveal<CR>', { desc = 'NeoTree reveal' } },
   },
   opts = {
     close_if_last_window = true,
@@ -19,6 +19,7 @@ return {
       -- use_devicons=true,
       window = {
         mappings = {
+          ['P'] = { 'toggle_preview', config = { use_float = true, use_image_nvim = false } },
           ['Y'] = function(state)
             -- NeoTree is based on [NuiTree](https://github.com/MunifTanjim/nui.nvim/tree/main/lua/nui/tree)
             -- The node is based on [NuiNode](https://github.com/MunifTanjim/nui.nvim/tree/main/lua/nui/tree#nuitreenode)
@@ -27,7 +28,11 @@ return {
             vim.fn.setreg('+', filepath)
             vim.notify('Copied: ' .. filepath)
           end,
-          ['\\'] = 'close_window',
+          -- ['P'] = function(state)
+          --   local node = state.tree:get_node()
+          --   require('neo-tree.ui.renderer').focus_node(state, node:get_parent_id())
+          -- end,
+          ['<leader>te'] = 'close_window',
         },
       },
     },
