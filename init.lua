@@ -84,7 +84,7 @@ vim.opt.tabstop = 4 -- Number of spaces that a <Tab> counts for
 vim.opt.softtabstop = 4 -- Number of spaces that a <Tab> counts for while editing
 
 vim.opt.termguicolors = true
-
+vim.opt.wrap = false
 -- vim.opt.spelllang = 'en_us'
 -- vim.opt.spell = true
 
