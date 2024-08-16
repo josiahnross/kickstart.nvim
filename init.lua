@@ -7,6 +7,7 @@
 -- use C-a and C-x to inc and dec number
 -- shortcut for find and replace all
 -- debugging?!?!
+-- noice
 
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
