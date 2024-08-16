@@ -95,21 +95,9 @@ vim.opt.termguicolors = true
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
--- Diagnostic keymaps
-vim.diagnostic.config { severity_sort = true, virtual_text = {
 
-  severity = { min = vim.diagnostic.severity.INFO },
-} }
-vim.keymap.set('n', '[d', function()
-  vim.diagnostic.jump { count = -1, float = true }
-end, { desc = 'Go to previous [D]iagnostic message' })
-vim.keymap.set('n', ']d', function()
-  vim.diagnostic.jump { count = 1, float = true }
-end, { desc = 'Go to next [D]iagnostic message' })
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
-vim.keymap.set('n', '<leader>q', function()
-  vim.diagnostic.setloclist { severity = 'ERROR' }
-end, { desc = 'Open Error diagnostic [Q]uickfix list' })
+require('diagnostics')
+
 vim.keymap.set('n', '<leader>j', '<cmd>lnext<CR>zz', { desc = 'Forward Location List' })
 vim.keymap.set('n', '<leader>k', '<cmd>lprev<CR>zz', { desc = 'Backward Location List' })
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
@@ -223,14 +211,15 @@ require('lazy').setup({
   -- See `:help gitsigns` to understand what the configuration keys do
   { -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
+    -- self
     opts = {
-      signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-      },
+      -- signs = {
+      --   add = { text = 'a' },
+      --   change = { text = '~' },
+      --   delete = { text = '_' },
+      --   topdelete = { text = '‾' },
+      --   changedelete = { text = '~' },
+      -- },
     },
   },
 
@@ -551,11 +540,11 @@ require('lazy').setup({
           require('lsp_signature').on_attach({}, event.buf)
         end,
       })
-      local signs = { Error = '', Warn = '', Hint = '󰠠', Info = '' }
-      for type, icon in pairs(signs) do
-        local hl = 'DiagnosticSign' .. type
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
-      end
+      -- local signs = { Error = '', Warn = '', Hint = '󰠠', Info = '' }
+      -- for type, icon in pairs(signs) do
+      --   local hl = 'DiagnosticSign' .. type
+      --   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
+      -- end
       -- LSP servers and clients are able to communicate to each other what features they support.
       --  By default, Neovim doesn't support everything that is in the LSP specification.
       --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
